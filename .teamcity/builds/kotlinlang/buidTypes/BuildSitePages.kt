@@ -188,7 +188,7 @@ object BuildSitePages : BuildType({
       }
 
       artifacts {
-         artifactRules = "+:latest-version.zip!all-libs/** => api/stdlib"
+        artifactRules = "+:latest-version.zip!all-libs/** => api/core"
       }
     }
   }
