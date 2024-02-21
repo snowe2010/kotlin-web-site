@@ -71,8 +71,11 @@ object BuildSitePages : BuildType({
                 mv build dist
                 cp -fR spec dist/
                 cp -fR _assets dist/
+                
                 cp -fR out dist/
                 cp -fR out/_next dist/_next/
+                rm -rf out
+
                 cp -fR libs/* dist/api/
             """.trimIndent()
         }
