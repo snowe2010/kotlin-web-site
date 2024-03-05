@@ -366,9 +366,7 @@ Zoomable:
 
 Button-style:
 
-<a href="https://kmp.jetbrains.com">
-   <img src="multiplatform-create-project-button.png" alt="Create a project"/>
-</a>
+<a href="https://kmp.jetbrains.com"><img src="multiplatform-create-project-button.png" alt="Create a project"/></a>
 
 ## Notes
 
