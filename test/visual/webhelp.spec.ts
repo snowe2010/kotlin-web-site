@@ -15,6 +15,22 @@ test.describe('WebHelp page appearance', async () => {
         await webHelpPage.init();
     });
 
+    test(`Should render article navigation properly on desktop`, async ({ page }) => {
+        await page.setViewportSize(RESOLUTIONS[0]);
+        const element = await page.locator('aside').locator('ul.toc').first().elementHandle();
+        const screenshot = await getElementScreenshotWithPadding(page, element, ELEMENT_PADDING_OFFSET);
+        expect(screenshot).toMatchSnapshot('article-navigation_desktop.png');
+    });
+
+    test(`Should render indicate current section in article navigation`, async ({ page }) => {
+        await page.setViewportSize(RESOLUTIONS[0]);
+        await page.locator('a[href="/docs/test-page.html#lists"]').first().click();
+        await page.waitForTimeout(MICRO_ANIMATION_TIMEOUT_LONG);
+        const element = await page.locator('aside').locator('ul.toc').first().elementHandle();
+        const screenshot = await getElementScreenshotWithPadding(page, element, ELEMENT_PADDING_OFFSET);
+        expect(screenshot).toMatchSnapshot('article-navigation-current-section_desktop.png');
+    });
+
     for (const resolution of RESOLUTIONS) {
         test(`Should render layout of the article properly on ${resolution.name}`, async ({ page }) => {
             await page.setViewportSize(resolution);
